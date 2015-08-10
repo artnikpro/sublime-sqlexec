@@ -66,6 +66,7 @@ class Command:
     def _display(self, panelName, text):
         if not sublime.load_settings("SQLExec.sublime-settings").get('show_result_on_window'):
             panel = sublime.active_window().create_output_panel(panelName)
+            panel.settings().set("word_wrap", "false")
             sublime.active_window().run_command("show_panel", {"panel": "output." + panelName})
         else:
             panel = sublime.active_window().new_file()
